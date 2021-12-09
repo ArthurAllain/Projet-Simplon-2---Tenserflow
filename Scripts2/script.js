@@ -61,9 +61,9 @@ for (let n = 0; n < predictions.length; n++) {
 }
 
 // Call this function again to keep predicting when the browser is ready.
-window.requestAnimationFrame(predictWebcam);
-});
-}
+//window.requestAnimationFrame(predictWebcam);
+//});
+//}
 
 Switch.addEventListener('click', function (event) {
     
@@ -77,8 +77,9 @@ Switch.addEventListener('click', function (event) {
             alert("Something went wrong!");
             });
 
-            Switch.classList.remove("btn-success");
-            Switch.classList.add("btn-danger");
+            //Switch.classList.remove("btn-success");
+            //Switch.classList.add("btn-danger");
+            Switch.style.backgroundColor = "red";
             SwitchState = 1;
             
             video.addEventListener('loadeddata', predictWebcam);
@@ -92,9 +93,9 @@ Switch.addEventListener('click', function (event) {
           }
         children.splice(0);
 
-        Switch.classList.remove("btn-danger");
-        Switch.classList.add("btn-success");
+        //Switch.classList.remove("btn-danger");
+        //Switch.classList.add("btn-success");
+        Switch.style.backgroundColor = "green";
         SwitchState = 0;
     }
-
-});
+})

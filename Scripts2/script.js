@@ -27,10 +27,11 @@ return res;
 function predictWebcam() {
 
 model.detect(video).then(function (predictions) {
-// Remove any highlighting we did previous frame.
-for (let i = 0; i < children.length; i++) {
-  Cam.removeChild(children[i]);
-}
+    // Remove any highlighting we did previous frame.
+    for (let i = 0; i < children.length; i++) {
+    Cam.removeChild(children[i]);
+    }
+
 children.splice(0);
 
 // Now lets loop through predictions and draw them to the live view if
@@ -60,10 +61,10 @@ for (let n = 0; n < predictions.length; n++) {
   }
 }
 
-// Call this function again to keep predicting when the browser is ready.
-//window.requestAnimationFrame(predictWebcam);
-//});
-//}
+        // Call this function again to keep predicting when the browser is ready.
+        window.requestAnimationFrame(predictWebcam);
+    });
+}
 
 Switch.addEventListener('click', function (event) {
     
@@ -99,3 +100,4 @@ Switch.addEventListener('click', function (event) {
         SwitchState = 0;
     }
 })
+

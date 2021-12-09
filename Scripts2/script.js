@@ -81,8 +81,7 @@ Switch.addEventListener('click', function (event) {
             Switch.classList.add("btn-danger");
             SwitchState = 1;
             
-            video.
-            addEventListener('loadeddata', predictWebcam);
+            video.addEventListener('loadeddata', predictWebcam);
         }
     } else {
 

@@ -26,7 +26,8 @@ body {
 #Cam {
     position: relative;
     height: 350px;
-    width: calc(50% - 20px);
+    width: 350px;
+    /*width: calc(50% - 20px);*/
     border: 5px solid rgb(9, 9, 66);
     background-color: lightgray;
     margin-left: 25px;
@@ -42,7 +43,14 @@ body {
     border: 1px dashed rgba(255, 255, 255, 0.7);
     z-index: 2;
     font-size: 12px;
-  }
+}
+
+.highlighter {
+    background: rgba(0, 255, 0, 0.25);
+    border: 1px dashed #fff;
+    z-index: 1;
+    position: absolute;
+}
 
 #Webcam {
     height: 100%;

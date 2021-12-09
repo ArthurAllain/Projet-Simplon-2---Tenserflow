@@ -1,13 +1,13 @@
-const liveView = document.getElementById('liveView');
-const video = document.querySelector("#videoElement");
-const myButton = document.querySelector("#myButton");
+const Cam = document.getElementById('Cam');
+const video = document.querySelector("#Webcam");
+const Switch = document.querySelector("#Switch");
 
 const widthmax = 2000;
 const heightmax = 500;
 const LVoffset = 0;
 const LVratio = 1;
 
-var myButtonState = 0;
+var SwitchState = 0;
 var children = [];
 
 cocoSsd.load().then(function (loadedModel) {
@@ -29,7 +29,7 @@ function predictWebcam() {
 model.detect(video).then(function (predictions) {
 // Remove any highlighting we did previous frame.
 for (let i = 0; i < children.length; i++) {
-  liveView.removeChild(children[i]);
+  Cam.removeChild(children[i]);
 }
 children.splice(0);
 
@@ -53,8 +53,8 @@ for (let n = 0; n < predictions.length; n++) {
         + LVadjust(predictions[n].bbox[2]) + 'px; height: '
         + LVadjust(predictions[n].bbox[3]) + 'px;';
 
-    liveView.appendChild(highlighter);
-    liveView.appendChild(p);
+    Cam.appendChild(highlighter);
+    Cam.appendChild(p);
     children.push(highlighter);
     children.push(p);
   }
@@ -65,9 +65,9 @@ window.requestAnimationFrame(predictWebcam);
 });
 }
 
-myButton.addEventListener('click', function (event) {
+Switch.addEventListener('click', function (event) {
     
-    if (myButtonState == 0) {
+    if (SwitchState == 0) {
         if (navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true })
             .then(function (stream) {
@@ -77,9 +77,9 @@ myButton.addEventListener('click', function (event) {
             alert("Something went wrong!");
             });
 
-            myButton.classList.remove("btn-success");
-            myButton.classList.add("btn-danger");
-            myButtonState = 1;
+            Switch.classList.remove("btn-success");
+            Switch.classList.add("btn-danger");
+            SwitchState = 1;
             
             video.
             addEventListener('loadeddata', predictWebcam);
@@ -89,15 +89,13 @@ myButton.addEventListener('click', function (event) {
         video.srcObject = null;
 
         for (let i = 0; i < children.length; i++) {
-            liveView.removeChild(children[i]);
+            Cam.removeChild(children[i]);
           }
         children.splice(0);
 
-        myButton.classList.remove("btn-danger");
-        myButton.classList.add("btn-success");
-        myButtonState = 0;
+        Switch.classList.remove("btn-danger");
+        Switch.classList.add("btn-success");
+        SwitchState = 0;
     }
 
 });
-
-//myButton.list

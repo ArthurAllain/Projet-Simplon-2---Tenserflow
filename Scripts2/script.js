@@ -1,6 +1,6 @@
 const Cam = document.getElementById('Cam');
 const video = document.querySelector("#Webcam");
-const Switch = document.querySelector("#Switch");
+const Switch = document.querySelector("#btn");
 
 const widthmax = 2000;
 const heightmax = 500;
